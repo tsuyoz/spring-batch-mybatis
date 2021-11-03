@@ -21,7 +21,7 @@ class BatchConfig(
     private val stepBuilderFactory: StepBuilderFactory,
     private val sqlSessionFactory: SqlSessionFactory,
     private val updateAgeProcessor: UpdateAgeProcessor,
-    private val printEmployeeTasklet: PrintEmployeeTasklet,
+//    private val printEmployeeTasklet: PrintEmployeeTasklet,
 ) {
 
     @Bean
@@ -50,18 +50,18 @@ class BatchConfig(
             .build()
     }
 
-    @Bean
-    fun printStep(): Step {
-        return stepBuilderFactory.get("update-age-print-step")
-            .tasklet(printEmployeeTasklet)
-            .build()
-    }
+//    @Bean
+//    fun printStep(): Step {
+//        return stepBuilderFactory.get("update-age-print-step")
+//            .tasklet(printEmployeeTasklet)
+//            .build()
+//    }
 
     @Bean
     fun job(): Job {
         return jobBuilderFactory.get("update-age-job")
             .start(updateStep())
-            .next(printStep())
+//            .next(printStep())
             .build()
     }
 }
