@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbatchmybatis.da.mapper.EmployeeMapper">
+    <resultMap id="employeeResultMap" type="com.example.springbatchmybatis.da.entity.Employee">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="birthday" property="birthday" jdbcType="DATE"/>
+        <result column="age" property="age" jdbcType="INTEGER"/>
+        <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="employeeResultMap">
+        select id, name, birthday, age, updated_at
+        from employee
+        order by id
+    </select>
+
+    <update id="updateAge" parameterType="com.example.springbatchmybatis.da.entity.Employee">
+        update employee
+        set age = #{age},
+            updated_at = #{updatedAt}
+        where id = #{id}
+    </update>
+</mapper>

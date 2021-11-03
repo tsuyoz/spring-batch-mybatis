@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+logging:
+  level:
+    com:
+      example:
+        springbatchmybatis:
+          da:
+            mapper: debug
